@@ -6,7 +6,7 @@
 function getUrlParam(name) {
 	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
 	var r = window.location.search.substr(1).match(reg);
-	if (r != null) {
+	if(r != null) {
 		return unescape(r[2]);
 	}
 	return null;
@@ -19,7 +19,7 @@ function getUrlParam(name) {
  */
 function checkPhone(mobile) {
 	var phone = mobile.val();
-	if (!(/^1[34578]\d{9}$/.test(phone))) {
+	if(!(/^1[34578]\d{9}$/.test(phone))) {
 		console.log('error');
 		return false;
 	} else {
@@ -35,7 +35,7 @@ function checkPhone(mobile) {
 function checkEmail(mail) {
 	var pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
 	var email = mail.val();
-	if (!(pattern.test(email))) {
+	if(!(pattern.test(email))) {
 		console.log('error');
 		return false;
 	} else {
@@ -62,7 +62,7 @@ function countChar(obj, obj1, num) {
  */
 function isChinese(obj) {
 	var name = obj.val();
-	if (!(/[\u4e00-\u9fa5]/.test(name))) {
+	if(!(/[\u4e00-\u9fa5]/.test(name))) {
 		console.log('error');
 		return false;
 	} else {
@@ -77,7 +77,7 @@ function isChinese(obj) {
  */
 function isNumber(number) {
 	var pattern = /^[0-9]$/;
-	if (pattern.test(number)) {
+	if(pattern.test(number)) {
 		console.log('bingo');
 		return true;
 	} else {
@@ -93,22 +93,22 @@ function isNumber(number) {
  */
 function checkPwd(str) {
 	var pwdLv = 0;
-	if (str.length < 6) {
+	if(str.length < 6) {
 		return pwdLv
 	}
-	if (/[0-9]/.test(str)) {
+	if(/[0-9]/.test(str)) {
 		pwdLv++
 	}
-	if (/[a-z]/.test(str)) {
+	if(/[a-z]/.test(str)) {
 		pwdLv++
 	}
-	if (/[A-Z]/.test(str)) {
+	if(/[A-Z]/.test(str)) {
 		pwdLv++
 	}
-	if (/[\.|-|_]/.test(str)) {
+	if(/[\.|-|_]/.test(str)) {
 		pwdLv++
 	}
-	if (str.length > 16) {
+	if(str.length > 16) {
 		return false;
 	}
 	return pwdLv;
@@ -116,14 +116,14 @@ function checkPwd(str) {
 
 //判断滚动条是否到底部
 function scrollBarToBottom() {
-	$(window).scroll(function () {　　
+	$(window).scroll(function() {　　
 		var scrollTop = $(this).scrollTop();　　
 		var docHeight = $(document).height();　　
 		var windowHeight = $(this).height();
 		var scrollHeight = document.body.scrollHeight;
 		console.log("scrollTop:" + scrollTop);
 		console.log("scrollbottom:" + (docHeight - scrollTop - windowHeight));
-		if (scrollTop + windowHeight == docHeight) {　　　　
+		if(scrollTop + windowHeight == docHeight) {　　　　
 			console.log("已经到最底部了！你还想要怎样");　　
 		}
 	})
@@ -134,15 +134,15 @@ function scrollBarToBottom() {
  * @ param {DOM} goTop 
  */
 function toTop(goTop) {
-	$(window).scroll(function () {
+	$(window).scroll(function() {
 		var windowTop = $(window).scrollTop();
-		if (windowTop > 100) {
+		if(windowTop > 100) {
 			goTop.fadeIn();
 		} else {
 			goTop.fadeOut();
 		}
 	});
-	goTop.click(function () {
+	goTop.click(function() {
 		$("html,body").animate({
 			scrollTop: "0"
 		}, '500');
@@ -189,21 +189,21 @@ function toDateFormat(timestamp) {
 	}
 
 	function supplementZero(obj, num) {
-		if (obj == null || obj == undefined) {
+		if(obj == null || obj == undefined) {
 			return "";
 		}
-		if (num == null || num == "" || num == undefined) {
+		if(num == null || num == "" || num == undefined) {
 			num = 2; //默认两位  
 		}
 		//前面补充的0  
 		var zeroStr = "";
-		if (obj.toString().length < num) {
+		if(obj.toString().length < num) {
 			var gap = num - obj.toString().length;
-			for (var i = 0; i < gap; i++) {
+			for(var i = 0; i < gap; i++) {
 				zeroStr += "0";
 			}
 		}
-		if (zeroStr != "") {
+		if(zeroStr != "") {
 			return zeroStr + obj;
 		} else {
 			return obj;
@@ -247,4 +247,16 @@ function adapt(designWidth, rem2px) {
 	st.innerHTML = portrait + landscape;
 	head.appendChild(st);
 	return defaultFontSize
+}
+
+/**
+ * 点击文档空白处隐藏元素 针对iOS 安卓会自动隐藏
+ * @ param {param}
+ * @ returns 
+ */
+function clickHide(e) {
+	var con = $('.is-show'); /* 需要隐藏的元素 */
+	if(!con.is(e.target) && con.has(e.target).length === 0) {
+		is-show.hide();
+	}
 }
