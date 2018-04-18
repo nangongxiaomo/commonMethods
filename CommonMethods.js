@@ -250,7 +250,7 @@ function adapt(designWidth, rem2px) {
 }
 
 /**
- * 点击文档空白处隐藏元素 针对iOS 安卓会自动隐藏
+ * 点击文档空白处隐藏input输入框 针对iOS 安卓会自动隐藏
  * @ param {param}
  * @ returns 
  */
