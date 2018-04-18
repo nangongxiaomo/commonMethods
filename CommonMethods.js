@@ -254,9 +254,23 @@ function adapt(designWidth, rem2px) {
  * @ param {param}
  * @ returns 
  */
-function clickHide(e) {
-	var con = $('.is-show'); /* 需要隐藏的元素 */
-	if(!con.is(e.target) && con.has(e.target).length === 0) {
-		is-show.hide();
+function objBlur(id, time) {
+	if(typeof id != 'string') throw new Error('objBlur()参数错误');
+	var obj = document.getElementById(id),
+		time = time || 300,
+		docTouchend = function(event) {
+			if(event.target != obj) {
+				setTimeout(function() {
+					obj.blur();
+					document.removeEventListener('touchend', docTouchend, false);
+				}, time);
+			}
+		};
+	if(obj) {
+		obj.addEventListener('focus', function() {
+			document.addEventListener('touchend', docTouchend, false);
+		}, false);
+	} else {
+		throw new Error('objBlur()没有找到元素');
 	}
-}
+};
