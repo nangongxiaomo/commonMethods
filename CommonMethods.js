@@ -1,7 +1,7 @@
 //获取URL参数
 /**
- * @ param {String} name 
- * @ returns 
+ * @param {String} name 
+ * @returns 
  */
 function getUrlParam(name) {
 	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -14,8 +14,8 @@ function getUrlParam(name) {
 
 //验证手机号
 /**
- * @ param {DOM} mobile 
- * @ returns 
+ * @param {DOM} mobile 
+ * @returns 
  */
 function checkPhone(mobile) {
 	var phone = mobile.val();
@@ -29,8 +29,8 @@ function checkPhone(mobile) {
 
 //验证邮箱地址
 /**
- * @ param {DOM} mail 
- * @ returns 
+ * @param {DOM} mail 
+ * @returns 
  */
 function checkEmail(mail) {
 	var pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
@@ -45,9 +45,9 @@ function checkEmail(mail) {
 
 //限制文本输入框字体长度
 /** 
- * @ param {DOM} obj  ID名
- * @ param {DOM} obj1 ID名
- * @ param {Number} num  总共可输入的字体长度
+ * @param {DOM} obj  ID名
+ * @param {DOM} obj1 ID名
+ * @param {Number} num  总共可输入的字体长度
  */
 function countChar(obj, obj1, num) {
 	var count = document.getElementById(obj); //实时提醒字体还剩多少
@@ -57,8 +57,8 @@ function countChar(obj, obj1, num) {
 
 //验证中文
 /**
- * @ param {DOM} obj 
- * @ returns 
+ * @param {DOM} obj 
+ * @returns 
  */
 function isChinese(obj) {
 	var name = obj.val();
@@ -72,8 +72,8 @@ function isChinese(obj) {
 
 //只能输入数字
 /**
- * @ param {Number} number 
- * @ returns 
+ * @param {Number} number 
+ * @returns 
  */
 function isNumber(number) {
 	var pattern = /^[0-9]$/;
@@ -88,8 +88,8 @@ function isNumber(number) {
 
 //密码强度验证
 /**
- * @ param {String} str 
- * @ returns 
+ * @param {String} str 
+ * @returns 
  */
 function checkPwd(str) {
 	var pwdLv = 0;
@@ -131,7 +131,7 @@ function scrollBarToBottom() {
 
 //回到顶部
 /**
- * @ param {DOM} goTop 
+ * @param {DOM} goTop 
  */
 function toTop(goTop) {
 	$(window).scroll(function () {
@@ -151,9 +151,9 @@ function toTop(goTop) {
 
 //生成随机数
 /**
- * @ param {Number} min 
- * @ param {Number} max 
- * @ returns 
+ * @param {Number} min 
+ * @param {Number} max 
+ * @returns 
  */
 function randomNumber(min, max) {
 	return min + (Math.random() * (max - min + 1));
@@ -171,8 +171,8 @@ function mobileReplace(str) {
 
 //日期处理 时间戳转换成 y-d-m h:m:s格式
 /**
- * @ param {String} timestamp 时间戳
- * @ returns 
+ * @param {String} timestamp 时间戳
+ * @returns 
  */
 function toDateFormat(timestamp) {
 	function timestampToFormatDate() {
@@ -227,9 +227,9 @@ function getRandomRgbaColor() {
 
 /**
  * px转换rem
- * @ param {Number} designWidth 设计图尺寸
- * @ param {Number} rem2px 转换比例 100
- * @ returns 
+ * @param {Number} designWidth 设计图尺寸
+ * @param {Number} rem2px 转换比例 100
+ * @returns 
  * Demo:adapt(640, 100)
  */
 function adapt(designWidth, rem2px) {
@@ -251,8 +251,8 @@ function adapt(designWidth, rem2px) {
 
 /**
  * 点击文档空白处隐藏input输入框 针对iOS 安卓会自动隐藏
- * @ param {param}
- * @ returns 
+ * @param {param}
+ * @returns 
  */
 function objBlur(id, time) {
 	if (typeof id != 'string') throw new Error('objBlur()参数错误');
@@ -295,8 +295,6 @@ $(window).on('orientationchange', function (e) {
 
 //取视频第一帧为封面图片
 /**
- * 
- * 
  * @param {element} videoEle 
  */
 function getVideoPoster(videoEle) {
