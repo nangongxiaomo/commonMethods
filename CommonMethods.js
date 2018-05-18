@@ -276,23 +276,21 @@ function objBlur(id, time) {
 };
 
 //移动端横竖屏模式
-function orient() {
-	if (window.orientation == 90 || window.orientation == -90) {
-		$("body").attr("class", "landscape"); //横屏模式
-		//TODO...
-		orientation = 'landscape';
-		return false;
-	} else if (window.orientation == 0 || window.orientation == 180) {
-		$("body").attr("class", "portrait"); //竖屏模式
-		//TODO...
-		orientation = 'portrait';
-		return false;
-	}
+function isLandOrPort() {
+	$(window).on('orientationchange', function (e) {
+		if (window.orientation == 90 || window.orientation == -90) {
+			$("body").attr("class", "landscape"); //横屏模式
+			//TODO...
+			orientation = 'landscape';
+			return false;
+		} else if (window.orientation == 0 || window.orientation == 180) {
+			$("body").attr("class", "portrait"); //竖屏模式
+			//TODO...
+			orientation = 'portrait';
+			return false;
+		}
+	})
 }
-//window对象添加orientationchange事件
-$(window).on('orientationchange', function (e) {
-	orient();
-});
 
 //取视频第一帧为封面图片
 /**
