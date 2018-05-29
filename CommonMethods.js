@@ -270,7 +270,7 @@ function objBlur(id, time) {
 		obj.addEventListener('focus', function () {
 			document.addEventListener('touchend', docTouchend, false);
 		}, false);
-	} else {
+	} else {  
 		throw new Error('objBlur()没有找到元素');
 	}
 };
