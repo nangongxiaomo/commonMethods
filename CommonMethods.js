@@ -270,7 +270,7 @@ function objBlur(id, time) {
 		obj.addEventListener('focus', function () {
 			document.addEventListener('touchend', docTouchend, false);
 		}, false);
-	} else {  
+	} else {
 		throw new Error('objBlur()没有找到元素');
 	}
 };
@@ -306,5 +306,31 @@ function getVideoPoster(videoEle) {
 		canvas.height = video.videoHeight * scale;
 		canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); //画图
 		video.setAttribute("poster", canvas.toDataURL("image/png")); //关键一步 —— 设置标签的 poster 属性的值为 base64 编译过后的canvas绘图。
+	})
+}
+
+//移动端判断是长按还是点击
+/**
+ * @param {element} el 
+ */
+function isLongTap(el) {
+	el.on({
+		touchstart: function (e) {
+			timeOutEvent = setTimeout(function () {
+				timeOutEvent = 0;
+				alert('你长按了');
+			}, 400);
+		},
+		touchmove: function () {
+			clearTimeout(timeOutEvent);
+			timeOutEvent = 0;
+		},
+		touchend: function () {
+			clearTimeout(timeOutEvent);
+			if (timeOutEvent != 0) {
+				alert('你点击了');
+			}
+			return false;
+		}
 	})
 }
