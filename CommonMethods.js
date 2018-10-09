@@ -116,15 +116,15 @@ function checkPwd(str) {
 
 //判断滚动条是否到底部
 function scrollBarToBottom() {
-	$(window).scroll(function () {　　
-		var scrollTop = $(this).scrollTop();　　
-		var docHeight = $(document).height();　　
+	$(window).scroll(function () {
+		var scrollTop = $(this).scrollTop();
+		var docHeight = $(document).height();
 		var windowHeight = $(this).height();
 		var scrollHeight = document.body.scrollHeight;
 		console.log("scrollTop:" + scrollTop);
 		console.log("scrollbottom:" + (docHeight - scrollTop - windowHeight));
-		if (scrollTop + windowHeight == docHeight) {　　　　
-			console.log("已经到最底部了！你还想要怎样");　　
+		if (scrollTop + windowHeight == docHeight) {
+			console.log("已经到最底部了！你还想要怎样");
 		}
 	})
 };
@@ -332,5 +332,48 @@ function isLongTap(el) {
 			}
 			return false;
 		}
+	})
+}
+
+//jsonp处理跨域请求
+
+/**
+ *
+ *
+ * @param {*} url  请求的URL地址
+ * @param {*} params 向后台发送的数据
+ * @param {*} callback 回调函数 即跟后台约定的jsonp函数名
+ * @returns
+ * 测试用例 var params = {
+				g_tk: 5381,
+				uin: 0,
+				format: 'jsonp',
+				inCharset: 'utf-8',
+				outCharset: 'utf-8',
+				notice: 0,
+				platform: 'h5',
+				needNewCode: 1,
+				_: 1539051419323,
+				jsonpCallback: 'jsonpCallback'
+		}
+		jsonp('https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg', params, 'jsonpCallback')
+				.then(res => {
+						console.log(res)
+				})
+ */
+function jsonp(url, params, callback) {
+	return new Promimse((resolve, reject) => {
+		window[callback] = function (data) {
+			resolve(data);
+			document.body.removeChild(script);
+		}
+		params = { ...params, callback};
+		let arrs = [];
+		for (let key in params) {
+			arrs.push(`${key}=${params[key]}`)
+		}
+		let script = document.createElement('script');
+		script.src = url + '?' + arrs.join('&');
+		document.body.appendChild(script);
 	})
 }
