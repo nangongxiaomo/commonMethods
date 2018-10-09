@@ -4,12 +4,12 @@
  * @returns 
  */
 function getUrlParam(name) {
-	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-	var r = window.location.search.substr(1).match(reg);
-	if (r != null) {
-		return unescape(r[2]);
-	}
-	return null;
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
 }
 
 //验证手机号
@@ -18,13 +18,13 @@ function getUrlParam(name) {
  * @returns 
  */
 function checkPhone(mobile) {
-	var phone = mobile.val();
-	if (!(/^1[34578]\d{9}$/.test(phone))) {
-		console.log('error');
-		return false;
-	} else {
-		console.log('bingo');
-	}
+  var phone = mobile.val();
+  if (!(/^1[34578]\d{9}$/.test(phone))) {
+    console.log('error');
+    return false;
+  } else {
+    console.log('bingo');
+  }
 };
 
 //验证邮箱地址
@@ -33,14 +33,14 @@ function checkPhone(mobile) {
  * @returns 
  */
 function checkEmail(mail) {
-	var pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
-	var email = mail.val();
-	if (!(pattern.test(email))) {
-		console.log('error');
-		return false;
-	} else {
-		console.log('bingo');
-	}
+  var pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+  var email = mail.val();
+  if (!(pattern.test(email))) {
+    console.log('error');
+    return false;
+  } else {
+    console.log('bingo');
+  }
 };
 
 //限制文本输入框字体长度
@@ -50,9 +50,9 @@ function checkEmail(mail) {
  * @param {Number} num  总共可输入的字体长度
  */
 function countChar(obj, obj1, num) {
-	var count = document.getElementById(obj); //实时提醒字体还剩多少
-	var regionLen = document.getElementById(obj1).value.length; //文本输入框value长度 
-	count.innerHTML = num - regionLen;
+  var count = document.getElementById(obj); //实时提醒字体还剩多少
+  var regionLen = document.getElementById(obj1).value.length; //文本输入框value长度 
+  count.innerHTML = num - regionLen;
 };
 
 //验证中文
@@ -61,13 +61,13 @@ function countChar(obj, obj1, num) {
  * @returns 
  */
 function isChinese(obj) {
-	var name = obj.val();
-	if (!(/[\u4e00-\u9fa5]/.test(name))) {
-		console.log('error');
-		return false;
-	} else {
-		console.log('bingo');
-	}
+  var name = obj.val();
+  if (!(/[\u4e00-\u9fa5]/.test(name))) {
+    console.log('error');
+    return false;
+  } else {
+    console.log('bingo');
+  }
 }
 
 //只能输入数字
@@ -76,14 +76,14 @@ function isChinese(obj) {
  * @returns 
  */
 function isNumber(number) {
-	var pattern = /^[0-9]$/;
-	if (pattern.test(number)) {
-		console.log('bingo');
-		return true;
-	} else {
-		console.log('error');
-		return false;
-	}
+  var pattern = /^[0-9]$/;
+  if (pattern.test(number)) {
+    console.log('bingo');
+    return true;
+  } else {
+    console.log('error');
+    return false;
+  }
 };
 
 //密码强度验证
@@ -92,41 +92,41 @@ function isNumber(number) {
  * @returns 
  */
 function checkPwd(str) {
-	var pwdLv = 0;
-	if (str.length < 6) {
-		return pwdLv
-	}
-	if (/[0-9]/.test(str)) {
-		pwdLv++
-	}
-	if (/[a-z]/.test(str)) {
-		pwdLv++
-	}
-	if (/[A-Z]/.test(str)) {
-		pwdLv++
-	}
-	if (/[\.|-|_]/.test(str)) {
-		pwdLv++
-	}
-	if (str.length > 16) {
-		return false;
-	}
-	return pwdLv;
+  var pwdLv = 0;
+  if (str.length < 6) {
+    return pwdLv
+  }
+  if (/[0-9]/.test(str)) {
+    pwdLv++
+  }
+  if (/[a-z]/.test(str)) {
+    pwdLv++
+  }
+  if (/[A-Z]/.test(str)) {
+    pwdLv++
+  }
+  if (/[\.|-|_]/.test(str)) {
+    pwdLv++
+  }
+  if (str.length > 16) {
+    return false;
+  }
+  return pwdLv;
 };
 
 //判断滚动条是否到底部
 function scrollBarToBottom() {
-	$(window).scroll(function () {
-		var scrollTop = $(this).scrollTop();
-		var docHeight = $(document).height();
-		var windowHeight = $(this).height();
-		var scrollHeight = document.body.scrollHeight;
-		console.log("scrollTop:" + scrollTop);
-		console.log("scrollbottom:" + (docHeight - scrollTop - windowHeight));
-		if (scrollTop + windowHeight == docHeight) {
-			console.log("已经到最底部了！你还想要怎样");
-		}
-	})
+  $(window).scroll(function() {
+    var scrollTop = $(this).scrollTop();
+    var docHeight = $(document).height();
+    var windowHeight = $(this).height();
+    var scrollHeight = document.body.scrollHeight;
+    console.log("scrollTop:" + scrollTop);
+    console.log("scrollbottom:" + (docHeight - scrollTop - windowHeight));
+    if (scrollTop + windowHeight == docHeight) {
+      console.log("已经到最底部了！你还想要怎样");
+    }
+  })
 };
 
 //回到顶部
@@ -134,19 +134,19 @@ function scrollBarToBottom() {
  * @param {DOM} goTop 
  */
 function toTop(goTop) {
-	$(window).scroll(function () {
-		var windowTop = $(window).scrollTop();
-		if (windowTop > 100) {
-			goTop.fadeIn();
-		} else {
-			goTop.fadeOut();
-		}
-	});
-	goTop.click(function () {
-		$("html,body").animate({
-			scrollTop: "0"
-		}, '500');
-	});
+  $(window).scroll(function() {
+    var windowTop = $(window).scrollTop();
+    if (windowTop > 100) {
+      goTop.fadeIn();
+    } else {
+      goTop.fadeOut();
+    }
+  });
+  goTop.click(function() {
+    $("html,body").animate({
+      scrollTop: "0"
+    }, '500');
+  });
 };
 
 //生成随机数
@@ -156,7 +156,7 @@ function toTop(goTop) {
  * @returns 
  */
 function randomNumber(min, max) {
-	return Math.floor(min + (Math.random() * (max - min + 1)));
+  return Math.floor(min + (Math.random() * (max - min + 1)));
 }
 
 //手机号中间四位用星号代替
@@ -166,7 +166,7 @@ function randomNumber(min, max) {
  */
 
 function mobileReplace(str) {
-	return str.substring(0, 3) + '****' + str.substring(7);
+  return str.substring(0, 3) + '****' + str.substring(7);
 }
 
 //日期处理 时间戳转换成 y-d-m h:m:s格式
@@ -175,54 +175,54 @@ function mobileReplace(str) {
  * @returns 
  */
 function toDateFormat(timestamp) {
-	function timestampToFormatDate() {
-		var date = new Date();
-		date.setTime(timestamp);
-		var year = date.getFullYear();
-		var month = date.getMonth() + 1;
-		var day = date.getDate();
-		var hour = date.getHours();
-		var minute = date.getMinutes();
-		var second = date.getSeconds();
-		return year + '-' + supplementZero(month, 2) + '-' + supplementZero(day, 2) + ' ' +
-			supplementZero(hour, 2) + ':' + supplementZero(minute, 2) + ':' + supplementZero(second, 2);
-	}
+  function timestampToFormatDate() {
+    var date = new Date();
+    date.setTime(timestamp);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    return year + '-' + supplementZero(month, 2) + '-' + supplementZero(day, 2) + ' ' +
+      supplementZero(hour, 2) + ':' + supplementZero(minute, 2) + ':' + supplementZero(second, 2);
+  }
 
-	function supplementZero(obj, num) {
-		if (obj == null || obj == undefined) {
-			return "";
-		}
-		if (num == null || num == "" || num == undefined) {
-			num = 2; //默认两位  
-		}
-		//前面补充的0  
-		var zeroStr = "";
-		if (obj.toString().length < num) {
-			var gap = num - obj.toString().length;
-			for (var i = 0; i < gap; i++) {
-				zeroStr += "0";
-			}
-		}
-		if (zeroStr != "") {
-			return zeroStr + obj;
-		} else {
-			return obj;
-		}
-	}
+  function supplementZero(obj, num) {
+    if (obj == null || obj == undefined) {
+      return "";
+    }
+    if (num == null || num == "" || num == undefined) {
+      num = 2; //默认两位  
+    }
+    //前面补充的0  
+    var zeroStr = "";
+    if (obj.toString().length < num) {
+      var gap = num - obj.toString().length;
+      for (var i = 0; i < gap; i++) {
+        zeroStr += "0";
+      }
+    }
+    if (zeroStr != "") {
+      return zeroStr + obj;
+    } else {
+      return obj;
+    }
+  }
 }
 
 //随机获取16进制颜色
 function getRandomColor() {
-	return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6); // 0x1000000 << 0 取整
+  return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6); // 0x1000000 << 0 取整
 }
 
 //随机获取rgba颜色值
 function getRandomRgbaColor() {
-	var r = Math.floor(Math.random() * 256); //随机生成256以内r值
-	var g = Math.floor(Math.random() * 256); //随机生成256以内g值
-	var b = Math.floor(Math.random() * 256); //随机生成256以内b值
-	var alpha = Math.random().toFixed(1);; //随机生成1以内a值
-	return `rgba(${r},${g},${b},${alpha})`; //返回rgba(r,g,b,a)格式颜色 采用es6变量字符串拼接方法
+  var r = Math.floor(Math.random() * 256); //随机生成256以内r值
+  var g = Math.floor(Math.random() * 256); //随机生成256以内g值
+  var b = Math.floor(Math.random() * 256); //随机生成256以内b值
+  var alpha = Math.random().toFixed(1);; //随机生成1以内a值
+  return `rgba(${r},${g},${b},${alpha})`; //返回rgba(r,g,b,a)格式颜色 采用es6变量字符串拼接方法
 }
 
 /**
@@ -233,20 +233,20 @@ function getRandomRgbaColor() {
  * Demo:adapt(640, 100)
  */
 function adapt(designWidth, rem2px) {
-	var d = window.document.createElement('div');
-	d.style.width = '1rem';
-	d.style.display = "none";
-	var head = window.document.getElementsByTagName('head')[0];
-	head.appendChild(d);
-	var defaultFontSize = parseFloat(window.getComputedStyle(d, null).getPropertyValue('width'));
-	d.remove();
-	document.documentElement.style.fontSize = window.innerWidth / designWidth * rem2px / defaultFontSize * 100 + '%';
-	var st = document.createElement('style');
-	var portrait = "@media screen and (min-width: " + window.innerWidth + "px) {html{font-size:" + ((window.innerWidth / (designWidth / rem2px) / defaultFontSize) * 100) + "%;}}";
-	var landscape = "@media screen and (min-width: " + window.innerHeight + "px) {html{font-size:" + ((window.innerHeight / (designWidth / rem2px) / defaultFontSize) * 100) + "%;}}"
-	st.innerHTML = portrait + landscape;
-	head.appendChild(st);
-	return defaultFontSize
+  var d = window.document.createElement('div');
+  d.style.width = '1rem';
+  d.style.display = "none";
+  var head = window.document.getElementsByTagName('head')[0];
+  head.appendChild(d);
+  var defaultFontSize = parseFloat(window.getComputedStyle(d, null).getPropertyValue('width'));
+  d.remove();
+  document.documentElement.style.fontSize = window.innerWidth / designWidth * rem2px / defaultFontSize * 100 + '%';
+  var st = document.createElement('style');
+  var portrait = "@media screen and (min-width: " + window.innerWidth + "px) {html{font-size:" + ((window.innerWidth / (designWidth / rem2px) / defaultFontSize) * 100) + "%;}}";
+  var landscape = "@media screen and (min-width: " + window.innerHeight + "px) {html{font-size:" + ((window.innerHeight / (designWidth / rem2px) / defaultFontSize) * 100) + "%;}}"
+  st.innerHTML = portrait + landscape;
+  head.appendChild(st);
+  return defaultFontSize
 }
 
 /**
@@ -255,41 +255,41 @@ function adapt(designWidth, rem2px) {
  * @returns 
  */
 function objBlur(id, time) {
-	if (typeof id != 'string') throw new Error('objBlur()参数错误');
-	var obj = document.getElementById(id),
-		time = time || 300,
-		docTouchend = function (event) {
-			if (event.target != obj) {
-				setTimeout(function () {
-					obj.blur();
-					document.removeEventListener('touchend', docTouchend, false);
-				}, time);
-			}
-		};
-	if (obj) {
-		obj.addEventListener('focus', function () {
-			document.addEventListener('touchend', docTouchend, false);
-		}, false);
-	} else {
-		throw new Error('objBlur()没有找到元素');
-	}
+  if (typeof id != 'string') throw new Error('objBlur()参数错误');
+  var obj = document.getElementById(id),
+    time = time || 300,
+    docTouchend = function(event) {
+      if (event.target != obj) {
+        setTimeout(function() {
+          obj.blur();
+          document.removeEventListener('touchend', docTouchend, false);
+        }, time);
+      }
+    };
+  if (obj) {
+    obj.addEventListener('focus', function() {
+      document.addEventListener('touchend', docTouchend, false);
+    }, false);
+  } else {
+    throw new Error('objBlur()没有找到元素');
+  }
 };
 
 //移动端横竖屏模式
 function isLandOrPort() {
-	$(window).on('orientationchange', function (e) {
-		if (window.orientation == 90 || window.orientation == -90) {
-			$("body").attr("class", "landscape"); //横屏模式
-			//TODO...
-			orientation = 'landscape';
-			return false;
-		} else if (window.orientation == 0 || window.orientation == 180) {
-			$("body").attr("class", "portrait"); //竖屏模式
-			//TODO...
-			orientation = 'portrait';
-			return false;
-		}
-	})
+  $(window).on('orientationchange', function(e) {
+    if (window.orientation == 90 || window.orientation == -90) {
+      $("body").attr("class", "landscape"); //横屏模式
+      //TODO...
+      orientation = 'landscape';
+      return false;
+    } else if (window.orientation == 0 || window.orientation == 180) {
+      $("body").attr("class", "portrait"); //竖屏模式
+      //TODO...
+      orientation = 'portrait';
+      return false;
+    }
+  })
 }
 
 //取视频第一帧为封面图片
@@ -297,16 +297,16 @@ function isLandOrPort() {
  * @param {element} videoEle 
  */
 function getVideoPoster(videoEle) {
-	var video = null, //video标签
-		scale = 0.8; //第一帧图片与源视频的比例
-	video = videoEle.get(0); //赋值标签
-	video.on("loadeddata", function () { //加载完成事件，调用函数
-		var canvas = document.createElement("canvas"); //canvas画布
-		canvas.width = video.videoWidth * scale;
-		canvas.height = video.videoHeight * scale;
-		canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); //画图
-		video.setAttribute("poster", canvas.toDataURL("image/png")); //关键一步 —— 设置标签的 poster 属性的值为 base64 编译过后的canvas绘图。
-	})
+  var video = null, //video标签
+    scale = 0.8; //第一帧图片与源视频的比例
+  video = videoEle.get(0); //赋值标签
+  video.on("loadeddata", function() { //加载完成事件，调用函数
+    var canvas = document.createElement("canvas"); //canvas画布
+    canvas.width = video.videoWidth * scale;
+    canvas.height = video.videoHeight * scale;
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); //画图
+    video.setAttribute("poster", canvas.toDataURL("image/png")); //关键一步 —— 设置标签的 poster 属性的值为 base64 编译过后的canvas绘图。
+  })
 }
 
 //移动端判断是长按还是点击
@@ -314,25 +314,25 @@ function getVideoPoster(videoEle) {
  * @param {element} el 
  */
 function isLongTap(el) {
-	el.on({
-		touchstart: function (e) {
-			timeOutEvent = setTimeout(function () {
-				timeOutEvent = 0;
-				alert('你长按了');
-			}, 400);
-		},
-		touchmove: function () {
-			clearTimeout(timeOutEvent);
-			timeOutEvent = 0;
-		},
-		touchend: function () {
-			clearTimeout(timeOutEvent);
-			if (timeOutEvent != 0) {
-				alert('你点击了');
-			}
-			return false;
-		}
-	})
+  el.on({
+    touchstart: function(e) {
+      timeOutEvent = setTimeout(function() {
+        timeOutEvent = 0;
+        alert('你长按了');
+      }, 400);
+    },
+    touchmove: function() {
+      clearTimeout(timeOutEvent);
+      timeOutEvent = 0;
+    },
+    touchend: function() {
+      clearTimeout(timeOutEvent);
+      if (timeOutEvent != 0) {
+        alert('你点击了');
+      }
+      return false;
+    }
+  })
 }
 
 //jsonp处理跨域请求
@@ -358,22 +358,25 @@ function isLongTap(el) {
 		}
 		jsonp('https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg', params, 'jsonpCallback')
 				.then(res => {
-						console.log(res)
+					console.log(res)
 				})
  */
 function jsonp(url, params, callback) {
-	return new Promimse((resolve, reject) => {
-		window[callback] = function (data) {
-			resolve(data);
-			document.body.removeChild(script);
-		}
-		params = { ...params, callback};
-		let arrs = [];
-		for (let key in params) {
-			arrs.push(`${key}=${params[key]}`)
-		}
-		let script = document.createElement('script');
-		script.src = url + '?' + arrs.join('&');
-		document.body.appendChild(script);
-	})
+  return new Promimse((resolve, reject) => {
+    window[callback] = function(data) {
+      resolve(data);
+      document.body.removeChild(script);
+    }
+    params = {
+      ...params,
+      callback
+    };
+    let arrs = [];
+    for (let key in params) {
+      arrs.push(`${key}=${params[key]}`)
+    }
+    let script = document.createElement('script');
+    script.src = url + '?' + arrs.join('&');
+    document.body.appendChild(script);
+  })
 }
