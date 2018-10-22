@@ -367,8 +367,7 @@ function jsonp(url, params, callback) {
       resolve(data);
       document.body.removeChild(script);
     }
-    params = {
-      ...params,
+    params = {...params,
       callback
     };
     let arrs = [];
@@ -379,4 +378,49 @@ function jsonp(url, params, callback) {
     script.src = url + '?' + arrs.join('&');
     document.body.appendChild(script);
   })
+}
+
+
+/**
+ *
+ *
+ * @param {*} obj DOM
+ * @param {*} cls className
+ * @returns
+ */
+function hasClass(obj, cls) {
+  return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+};
+
+
+/**
+ *
+ *
+ * @param {*} obj DOM
+ * @param {*} cls className
+ */
+function addClass(obj, cls) {
+  if (!hasClass(obj, cls)) obj.className += ' ' + cls;
+};
+
+
+/**
+ *
+ *
+ * @param {*} obj DOM
+ * @param {*} cls className
+ */
+function removeClass(obj, cls) {
+  if (hasClass(obj, cls)) {
+    const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+    obj.className = obj.className.replace(reg, ' ');
+  }
+};
+
+function toggleClass(obj, cls) {
+  if (hasClass(obj, cls)) {
+    removeClass(obj, cls);
+  } else {
+    addClass(obj, cls);
+  }
 }
