@@ -342,7 +342,7 @@ function isLongTap(el) {
  *
  * @param {*} url  请求的URL地址
  * @param {*} params 向后台发送的数据
- * @param {*} callback 回调函数 即跟后台约定的jsonp函数名
+ * @param {*} callback 即跟后台约定的jsonp函数名
  * @returns
  * 测试用例 var params = {
 				g_tk: 5381,
