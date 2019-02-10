@@ -339,7 +339,6 @@ function isLongTap(el) {
 
 /**
  *
- *
  * @param {*} url  请求的URL地址
  * @param {*} params 向后台发送的数据
  * @param {*} callback 即跟后台约定的jsonp函数名
@@ -382,8 +381,7 @@ function jsonp(url, params, callback) {
 
 
 /**
- *
- *
+ *DOM元素有没有该class
  * @param {*} obj DOM
  * @param {*} cls className
  * @returns
@@ -394,8 +392,7 @@ function hasClass(obj, cls) {
 
 
 /**
- *
- *
+ *DOM元素添加class
  * @param {*} obj DOM
  * @param {*} cls className
  */
@@ -405,10 +402,9 @@ function addClass(obj, cls) {
 
 
 /**
- *
- *
- * @param {*} obj DOM
- * @param {*} cls className
+ *DOM元素删除class
+ *@param {DOM} obj
+ * @param {className} cls
  */
 function removeClass(obj, cls) {
   if (hasClass(obj, cls)) {
@@ -417,6 +413,11 @@ function removeClass(obj, cls) {
   }
 };
 
+/**
+ *toggle class类名
+ * @param {DOM} obj
+ * @param {className} cls
+ */
 function toggleClass(obj, cls) {
   if (hasClass(obj, cls)) {
     removeClass(obj, cls);
