@@ -521,7 +521,7 @@ function stopBubble(event) {
 }
 
 /**
- *
+ *阻止默认事件
  *
  * @param {*} event
  */
