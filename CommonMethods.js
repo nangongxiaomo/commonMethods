@@ -301,11 +301,11 @@ function isLandOrPort() {
 //取视频第一帧为封面图片
 /**
  * @param {element} videoEle
+ * @param {Number} scale //第一帧图片与源视频的比例
  */
-function getVideoPoster(videoEle) {
-  var video = null, //video标签
-    scale = 0.8 //第一帧图片与源视频的比例
-  video = videoEle.get(0) //赋值标签
+function getVideoPoster(videoEle, scale = 0.8) {
+  var video = null //video标签
+  var video = videoEle.get(0) //赋值标签
   video.on('loadeddata', function() {
     //加载完成事件，调用函数
     var canvas = document.createElement('canvas') //canvas画布
@@ -492,8 +492,8 @@ function getStyle(ele, prop) {
  *
  *添加事件
  * @param {DOM} ele
- * @param {eventType} type
- * @param {callback} handle
+ * @param {eventType} type //事件类型
+ * @param {callback} handle //事件处理函数
  */
 function addEvent(ele, type, handle) {
   if (ele.addEventListener) {
@@ -531,4 +531,27 @@ function cancelDefaultHandle(event) {
   } else {
     event.returnValue = false
   }
+}
+
+/**
+ *
+ *
+ * @param {String} url
+ * @param {Function} callback
+ */
+function asyncLoadScript(url, callback) {
+  const script = document.createElement('script')
+  if (script.readyState) {
+    script.onreadystatechange = function() {
+      if (script.readyState === 'complete' || script.readyState === 'loaded') {
+        callback()
+      }
+    }
+  } else {
+    script.onload = function() {
+      callback()
+    }
+  }
+  script.src = url
+  document.head.appendChild(script)
 }
