@@ -346,9 +346,9 @@ function isLongTap(el) {
 
 /**
  *
- * @param {*} url  请求的URL地址
- * @param {*} params 向后台发送的数据
- * @param {*} callback 即跟后台约定的jsonp函数名
+ * @param {String} url  请求的URL地址
+ * @param {Object} params 向后台发送的数据
+ * @param {String} callback 即跟后台约定的jsonp函数名
  * @returns
  * 测试用例 var params = {
 				g_tk: 5381,
@@ -554,4 +554,28 @@ function asyncLoadScript(url, callback) {
   }
   script.src = url
   document.head.appendChild(script)
+}
+
+/**
+ *深拷贝
+ *
+ * @param {*} origin
+ * @param {*} target
+ */
+function deepClone(origin, target) {
+  var target = target || {}
+  var tostr = Object.prototype.toString
+  var arrStr = '[objec Array]'
+  for (const prop in origin) {
+    if (origin.hasOwnProperty(prop)) {
+      const element = origin[prop]
+      if (element !== 'null' && typeof element === 'object') {
+        target[prop] = tostr.call(element) === arrStr ? [] : {}
+        deepClone(element, target[prop])
+      } else {
+        target[prop] = element
+      }
+    }
+  }
+  return target
 }
