@@ -579,3 +579,41 @@ function deepClone(origin, target) {
   }
   return target
 }
+
+/**
+ *防抖函数
+ *
+ * @param {Function} func
+ * @param {Number} delay
+ * @returns
+ */
+function debounce(func, delay) {
+  let timer
+  return function(...args) {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      func.apply(this, args)
+    }, delay)
+  }
+}
+
+/**
+ *节流函数
+ *
+ * @param {Function} func
+ * @param {Number} delay
+ * @returns
+ */
+function throttle(func, delay) {
+  let canRun = true
+  return function() {
+    if (!canRun) return
+    canRun = false
+    setTimeout(() => {
+      func.apply(this, arguments)
+      canRun = true
+    }, delay)
+  }
+}
