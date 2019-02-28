@@ -534,7 +534,7 @@ function cancelDefaultHandle(event) {
 }
 
 /**
- *
+ * 异步加载js代码
  *
  * @param {String} url
  * @param {Function} callback
