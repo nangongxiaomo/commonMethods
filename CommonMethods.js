@@ -29,13 +29,12 @@ function checkPhone(mobile) {
 
 //验证邮箱地址
 /**
- * @param {DOM} mail
+ * @param {String} mail
  * @returns
  */
-function checkEmail(mail) {
-  var pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
-  var email = mail.val()
-  if (!pattern.test(email)) {
+function checkEmail(str) {
+  const pattern = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
+  if (!pattern.test(str)) {
     console.log('error')
     return false
   } else {
@@ -50,18 +49,17 @@ function checkEmail(mail) {
  * @param {Number} num  总共可输入的字体长度
  */
 function countChar(obj, obj1, num) {
-  var count = document.getElementById(obj) //实时提醒字体还剩多少
-  var regionLen = document.getElementById(obj1).value.length //文本输入框value长度
+  var count = document.querySelectorAll(obj) //实时提醒字体还剩多少
+  var regionLen = document.querySelectorAll(obj1).value.length //文本输入框value长度
   count.innerHTML = num - regionLen
 }
 
 //验证中文
 /**
- * @param {DOM} obj
+ * @param {String} str
  * @returns
  */
-function isChinese(obj) {
-  var name = obj.val()
+function isChinese(str) {
   if (!/[\u4e00-\u9fa5]/.test(name)) {
     console.log('error')
     return false
@@ -91,7 +89,7 @@ function isNumber(number) {
  * @param {String} str
  * @returns
  */
-function checkPwd(str) {
+function checkPwd(str, strLen = 16) {
   var pwdLv = 0
   if (str.length < 6) {
     return pwdLv
@@ -108,7 +106,7 @@ function checkPwd(str) {
   if (/[\.|-|_]/.test(str)) {
     pwdLv++
   }
-  if (str.length > 16) {
+  if (str.length > strLen) {
     return false
   }
   return pwdLv
